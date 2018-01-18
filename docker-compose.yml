@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  php71:
+    build: ./docker-files
+    expose:
+      - "9000"
+      - "9001"
+      - "80"
+      - "443"
+    ports:
+      - "8088:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./docker-files/nginx-logs/:/var/log/nginx/
+      - ./docker-files/php-logs:/var/log/php
+    extra_hosts:
+      - "sbqa.jsl.com.br:10.152.0.39"
